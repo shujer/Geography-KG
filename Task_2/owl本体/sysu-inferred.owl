@@ -88,6 +88,12 @@
     <!-- http://www.sysu.com/专业 -->
 
     <owl:Class rdf:about="http://www.sysu.com/专业">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sysu.com/属于"/>
+                <owl:someValuesFrom rdf:resource="http://www.sysu.com/学院"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="http://www.sysu.com/学院"/>
         <owl:disjointWith rdf:resource="http://www.sysu.com/学院楼"/>
         <owl:disjointWith rdf:resource="http://www.sysu.com/实验楼"/>
@@ -106,12 +112,6 @@
     <!-- http://www.sysu.com/学院 -->
 
     <owl:Class rdf:about="http://www.sysu.com/学院">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.sysu.com/包含"/>
-                <owl:someValuesFrom rdf:resource="http://www.sysu.com/专业"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="http://www.sysu.com/学院楼"/>
         <owl:disjointWith rdf:resource="http://www.sysu.com/实验楼"/>
         <owl:disjointWith rdf:resource="http://www.sysu.com/宿舍楼"/>
