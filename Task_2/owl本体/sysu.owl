@@ -49,6 +49,14 @@
     
 
 
+    <!-- http://www.sysu.com/区 -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sysu.com/区">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://www.sysu.com/占地面积 -->
 
     <owl:DatatypeProperty rdf:about="http://www.sysu.com/占地面积">
@@ -60,6 +68,22 @@
     <!-- http://www.sysu.com/名称 -->
 
     <owl:DatatypeProperty rdf:about="http://www.sysu.com/名称">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sysu.com/市 -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sysu.com/市">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sysu.com/省 -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sysu.com/省">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
     </owl:DatatypeProperty>
     
@@ -218,50 +242,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.sysu.com/一饭">
         <rdf:type rdf:resource="http://www.sysu.com/食堂"/>
-        <属于 rdf:resource="http://www.sysu.com/东校园"/>
         <名称>一饭</名称>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.sysu.com/专业A -->
-
-    <owl:NamedIndividual rdf:about="http://www.sysu.com/专业A">
-        <rdf:type rdf:resource="http://www.sysu.com/专业"/>
-        <属于 rdf:resource="http://www.sysu.com/工学院"/>
-        <名称>专业A</名称>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.sysu.com/东校园 -->
-
-    <owl:NamedIndividual rdf:about="http://www.sysu.com/东校园">
-        <rdf:type rdf:resource="http://www.sysu.com/校园"/>
-        <属于 rdf:resource="http://www.sysu.com/广州校区"/>
-        <占地面积>1.22平方千米</占地面积>
-        <名称>东校园</名称>
-        <通讯地址>番禺区大学城</通讯地址>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.sysu.com/工学院 -->
-
-    <owl:NamedIndividual rdf:about="http://www.sysu.com/工学院">
-        <rdf:type rdf:resource="http://www.sysu.com/学院"/>
-        <属于 rdf:resource="http://www.sysu.com/东校园"/>
-        <名称>工学院</名称>
-        <通讯地址>大学城工学院</通讯地址>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.sysu.com/广州校区 -->
-
-    <owl:NamedIndividual rdf:about="http://www.sysu.com/广州校区">
-        <rdf:type rdf:resource="http://www.sysu.com/校区"/>
-        <名称>广州校区</名称>
     </owl:NamedIndividual>
     
 
