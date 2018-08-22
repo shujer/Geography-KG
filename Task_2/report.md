@@ -10,6 +10,7 @@
 5.	建筑：122栋
 
 ![](img/10.png)
+
 ![](img/1.PNG)
 
  - buliding表
