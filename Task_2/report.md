@@ -40,7 +40,7 @@
 ![](img/9.PNG)
 
 
-#### 从关系型数据库到RDF: D2RQ
+#### 从关系型数据库到三元组: D2RQ
 使用D2RQ写mapping.ttl文件，将关系型数据库映射为三元组格式并存储为N-Triple
 
 得到sysu_add.nt文件
