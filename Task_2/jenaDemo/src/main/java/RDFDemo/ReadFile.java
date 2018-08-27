@@ -9,7 +9,7 @@ public class ReadFile {
     public static void main(String[] args) {
         // 本体model
         OntModel ontmodel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM_MICRO_RULE_INF, null);
-        ontmodel.read("G:\\暑假-传统建筑\\protege存储\\sysu.owl");
+        ontmodel.read("C:\\Users\\lanse\\Documents\\GitHub\\Geography-KG\\Task_2\\owl本体\\sysu.owl");
 
         // SPARQL
         String prefix="PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>"+
@@ -18,7 +18,7 @@ public class ReadFile {
                 "PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>"+
                 "PREFIX :<http://www.sysu.com/>";
         String strq = "SELECT ?n ?xn WHERE {" +
-                            "?s rdf:type :校园." +
+                            "?s rdf:type :校区." +
                             "?s :名称 ?n." +
                             "?s :包含 ?x." +
                             "?x :名称 ?xn." +

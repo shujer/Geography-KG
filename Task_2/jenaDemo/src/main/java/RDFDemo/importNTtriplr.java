@@ -11,8 +11,8 @@ import java.io.InputStream;
 public class importNTtriplr {
     public static void main(String[] args) {
         // owl & 数据
-        String owlPath = "G:\\暑假-传统建筑\\protege存储\\sysu.owl";
-        String dataPath = "G:\\暑假-传统建筑\\d2rq-0.8.1\\sysu_add.nt";
+        String owlPath = "file:C:\\Users\\lanse\\Documents\\GitHub\\Geography-KG\\Task_2\\owl本体\\sysu.owl";
+        String dataPath = "file:C:\\Users\\lanse\\Documents\\GitHub\\Geography-KG\\Task_2\\owl本体\\sysu_add.nt";
         OntModel ontmodel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM_MICRO_RULE_INF, null);
         ontmodel.read(owlPath);
         //ontmodel.read(dataPath);
