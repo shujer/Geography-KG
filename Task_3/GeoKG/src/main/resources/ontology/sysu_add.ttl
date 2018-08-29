@@ -1,0 +1,158 @@
+@prefix map: <#> .
+@prefix db: <> .
+@prefix vocab: <vocab/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix jdbc: <http://d2rq.org/terms/jdbc/> .
+
+@prefix : <http://www.sysu.com/> .
+
+map:database a d2rq:Database;
+	d2rq:jdbcDriver "com.mysql.jdbc.Driver";
+	d2rq:jdbcDSN "jdbc:mysql://sql12.freemysqlhosting.net:3306/sql12252797";
+	d2rq:username "sql12252797";
+	d2rq:password "b1EkHGQzXz";
+	jdbc:autoReconnect "true";
+	jdbc:zeroDateTimeBehavior "convertToNull";
+# keep-alive 长期连接
+    jdbc:keepAlive "3600";
+    jdbc:keepAliveQuery "SELECT 1";
+	.
+
+# Table building(楼)
+map:building a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "building/@@building.buildingID@@";
+	d2rq:class :楼;
+	d2rq:classDefinitionLabel "building";
+	.
+map:building_name a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:building;
+	d2rq:property :名称;
+	d2rq:propertyDefinitionLabel "building name";
+	d2rq:column "building.name";
+	.
+map:building_province a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:building;
+	d2rq:property :省;
+	d2rq:propertyDefinitionLabel "building province";
+	d2rq:column "building.province";
+	.
+map:building_district a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:building;
+	d2rq:property :区;
+	d2rq:propertyDefinitionLabel "building district";
+	d2rq:column "building.district";
+	.
+map:building_city a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:building;
+	d2rq:property :市;
+	d2rq:propertyDefinitionLabel "building city";
+	d2rq:column "building.city";
+	.
+map:building_address a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:building;
+	d2rq:property :通讯地址;
+	d2rq:propertyDefinitionLabel "building address";
+	d2rq:pattern "@@building.province@@@@building.district@@@@building.city@@@@building.address@@";
+	.
+map:building_campusID__ref a d2rq:PropertyBridge;
+    d2rq:belongsToClassMap map:building;
+    d2rq:property :属于;
+    d2rq:refersToClassMap map:campus;
+    d2rq:join "building.campusID => campus.campusid";
+    .
+
+# Table campus(校园)
+map:campus a d2rq:ClassMap;
+    d2rq:dataStorage map:database;
+    d2rq:uriPattern "campus/@@campus.campusID@@";
+    d2rq:class :校园;
+    d2rq:classDefinitionLabel "campus";
+    .
+map:campus_name a d2rq:PropertyBridge;
+    d2rq:belongsToClassMap map:campus;
+    d2rq:property :名称;
+    d2rq:propertyDefinitionLabel "campus name";
+    d2rq:column "campus.name";
+    .
+map:campus_address a d2rq:PropertyBridge;
+    d2rq:belongsToClassMap map:campus;
+    d2rq:property :通讯地址;
+    d2rq:propertyDefinitionLabel "campus address";
+    d2rq:column "campus.address";
+    .
+map:campus_area a d2rq:PropertyBridge;
+    d2rq:belongsToClassMap map:campus;
+    d2rq:property :占地面积;
+    d2rq:propertyDefinitionLabel "campus area";
+    d2rq:column "campus.area";
+    .
+map:campus_zoneID__ref a d2rq:PropertyBridge;
+    d2rq:belongsToClassMap map:campus;
+    d2rq:property :属于;
+    d2rq:refersToClassMap map:zone;
+    d2rq:join "campus.zoneID => zone.zoneid";
+    .
+
+# Table faculty(学院)
+map:faculty a d2rq:ClassMap;
+    d2rq:dataStorage map:database;
+    d2rq:uriPattern "faculty/@@faculty.facultyID@@";
+    d2rq:class :学院;
+    d2rq:classDefinitionLabel "faculty";
+    .
+map:faculty_name a d2rq:PropertyBridge;
+    d2rq:belongsToClassMap map:faculty;
+    d2rq:property :名称;
+    d2rq:propertyDefinitionLabel "faculty name";
+    d2rq:column "faculty.name";
+    .
+map:faculty_address a d2rq:PropertyBridge;
+    d2rq:belongsToClassMap map:faculty;
+    d2rq:property :通讯地址;
+    d2rq:propertyDefinitionLabel "faculty address";
+    d2rq:column "faculty.address";
+    .
+map:faculty_campusID__ref a d2rq:PropertyBridge;
+    d2rq:belongsToClassMap map:faculty;
+    d2rq:property :属于;
+    d2rq:refersToClassMap map:campus;
+    d2rq:join "faculty.campusID => campus.campusid";
+    .
+
+# Table specialty(专业)
+map:specialty a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "specialty/@@specialty.specialtyID@@";
+	d2rq:class :专业;
+	d2rq:classDefinitionLabel "specialty";
+	.
+map:specialty_name a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:specialty;
+	d2rq:property :名称;
+	d2rq:propertyDefinitionLabel "specialty name";
+	d2rq:column "specialty.name";
+	.
+map:specialty_facultyID__ref a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:specialty;
+	d2rq:property :属于;
+	d2rq:refersToClassMap map:faculty;
+	d2rq:join "specialty.facultyID => faculty.facultyID";
+	.
+
+# Table zone(校区)
+map:zone a d2rq:ClassMap;
+    d2rq:dataStorage map:database;
+    d2rq:uriPattern "zone/@@zone.zoneID@@";
+    d2rq:class :校区;
+    d2rq:classDefinitionLabel "zone";
+    .
+map:zone_name a d2rq:PropertyBridge;
+    d2rq:belongsToClassMap map:zone;
+    d2rq:property :名称;
+    d2rq:propertyDefinitionLabel "zone name";
+    d2rq:column "zone.name";
+    .

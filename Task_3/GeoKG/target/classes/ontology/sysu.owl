@@ -1,0 +1,284 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.sysu.com/"
+     xml:base="http://www.sysu.com/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.sysu.com/"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.sysu.com/包含 -->
+
+    <owl:ObjectProperty rdf:about="http://www.sysu.com/包含">
+        <owl:inverseOf rdf:resource="http://www.sysu.com/属于"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.sysu.com/属于 -->
+
+    <owl:ObjectProperty rdf:about="http://www.sysu.com/属于">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.sysu.com/区 -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sysu.com/区">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sysu.com/占地面积 -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sysu.com/占地面积">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sysu.com/名称 -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sysu.com/名称">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sysu.com/市 -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sysu.com/市">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sysu.com/省 -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sysu.com/省">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.sysu.com/通讯地址 -->
+
+    <owl:DatatypeProperty rdf:about="http://www.sysu.com/通讯地址">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.sysu.com/专业 -->
+
+    <owl:Class rdf:about="http://www.sysu.com/专业">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sysu.com/属于"/>
+                <owl:someValuesFrom rdf:resource="http://www.sysu.com/学院"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sysu.com/学院 -->
+
+    <owl:Class rdf:about="http://www.sysu.com/学院"/>
+    
+
+
+    <!-- http://www.sysu.com/学院楼 -->
+
+    <owl:Class rdf:about="http://www.sysu.com/学院楼">
+        <rdfs:subClassOf rdf:resource="http://www.sysu.com/楼"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sysu.com/属于"/>
+                <owl:someValuesFrom rdf:resource="http://www.sysu.com/学院"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sysu.com/实验楼 -->
+
+    <owl:Class rdf:about="http://www.sysu.com/实验楼">
+        <rdfs:subClassOf rdf:resource="http://www.sysu.com/楼"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sysu.com/宿舍楼 -->
+
+    <owl:Class rdf:about="http://www.sysu.com/宿舍楼">
+        <rdfs:subClassOf rdf:resource="http://www.sysu.com/楼"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sysu.com/建筑 -->
+
+    <owl:Class rdf:about="http://www.sysu.com/建筑"/>
+    
+
+
+    <!-- http://www.sysu.com/教学楼 -->
+
+    <owl:Class rdf:about="http://www.sysu.com/教学楼">
+        <rdfs:subClassOf rdf:resource="http://www.sysu.com/楼"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sysu.com/校区 -->
+
+    <owl:Class rdf:about="http://www.sysu.com/校区">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sysu.com/包含"/>
+                <owl:someValuesFrom rdf:resource="http://www.sysu.com/校园"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sysu.com/校园 -->
+
+    <owl:Class rdf:about="http://www.sysu.com/校园">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sysu.com/包含"/>
+                <owl:someValuesFrom rdf:resource="http://www.sysu.com/学院"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sysu.com/楼 -->
+
+    <owl:Class rdf:about="http://www.sysu.com/楼">
+        <rdfs:subClassOf rdf:resource="http://www.sysu.com/建筑"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.sysu.com/属于"/>
+                <owl:someValuesFrom rdf:resource="http://www.sysu.com/校园"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sysu.com/行政楼 -->
+
+    <owl:Class rdf:about="http://www.sysu.com/行政楼">
+        <rdfs:subClassOf rdf:resource="http://www.sysu.com/楼"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.sysu.com/食堂 -->
+
+    <owl:Class rdf:about="http://www.sysu.com/食堂">
+        <rdfs:subClassOf rdf:resource="http://www.sysu.com/楼"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.sysu.com/一饭 -->
+
+    <owl:NamedIndividual rdf:about="http://www.sysu.com/一饭">
+        <rdf:type rdf:resource="http://www.sysu.com/食堂"/>
+        <名称>一饭</名称>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.sysu.com/专业"/>
+            <rdf:Description rdf:about="http://www.sysu.com/学院"/>
+            <rdf:Description rdf:about="http://www.sysu.com/建筑"/>
+            <rdf:Description rdf:about="http://www.sysu.com/校区"/>
+            <rdf:Description rdf:about="http://www.sysu.com/校园"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.sysu.com/学院楼"/>
+            <rdf:Description rdf:about="http://www.sysu.com/实验楼"/>
+            <rdf:Description rdf:about="http://www.sysu.com/宿舍楼"/>
+            <rdf:Description rdf:about="http://www.sysu.com/教学楼"/>
+            <rdf:Description rdf:about="http://www.sysu.com/行政楼"/>
+            <rdf:Description rdf:about="http://www.sysu.com/食堂"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
+
