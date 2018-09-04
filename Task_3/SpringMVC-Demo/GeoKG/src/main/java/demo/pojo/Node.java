@@ -33,4 +33,30 @@ public class Node {
     public Integer getValue() {
         return value;
     }
+
+    /*
+     * 重写equals和hashCode，以便在Set Map中自定义判定相同的条件
+     * */
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (this == obj) {
+            return true;
+        }
+        if (obj instanceof Node) {
+            Node no = (Node)obj;
+            // name相同则认定为相同
+            if (no.name.equals(this.name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return name.hashCode();
+    }
 }

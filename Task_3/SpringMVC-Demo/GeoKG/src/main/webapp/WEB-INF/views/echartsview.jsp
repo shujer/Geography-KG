@@ -33,8 +33,8 @@
                     <button type="submit" class="btn btn-success">确认</button>
                 </form>
             </div>
-            <div class="col-md-7 float-left" style="background-color: #3b8686;overflow: hidden">
-                <div id="myChart" class="graph" style="width: 550px;height: 500px"></div>
+            <div class="col-md-7 float-left" style="overflow: hidden">
+                <div id="myChart" class="graph" style="background-color: #0c5460;width: 600px;height: 600px"></div>
             </div>
         </div>
     </layout:put>
