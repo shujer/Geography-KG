@@ -42,85 +42,65 @@
         <script src="<c:url value="app/js/echarts.min.js"/> "></script>
         <script src="<c:url value="app/js/jquery-3.3.1.min.js"/> "></script>
         <script type="text/javascript">
-            $( document ).ready(function() {
-                console.log( "ready!" );
-                var myChart = echarts.init(document.getElementById("myChart"));
-                var options = {
-                    title: {
-                        show: false,
-                    },
-                    tooltip: {},
-                    animationDurationUpdate: 1500,
-                    animationEasingUpdate: 'quinticInOut',
-                    series : [
-                        {
-                            type: 'graph',
-                            layout: 'force',
-                            force: {
-                                repulsion: 3000,
-                            },
-                            name: 'queryResult',
-                            symbolSize: 35,
-                            roam: true,
-                            draggable: true,
-                            focusNodeAdjacency: true,
-                            edgeSymbol: ['circle', 'arrow'],
-                            edgeSymbolSize: [4, 10],
-                            label: {
-                                normal: {
-                                    show: true
-                                }
-                            },
-                            edgeLabel: {
-                                normal: {
-                                    textStyle: {
-                                        fontSize: 12
-                                    }
-                                }
-                            },
-                            data: [{
-                                name: '节点1'
-                            }, {
-                                name: '节点2'
-                            }, {
-                                name: '节点3'
-                            }, {
-                                name: '节点4'
-                            }],
-                            // links: [],
-                            links: [{
-                                source: '节点1',
-                                target: '节点2',
-                            }, {
-                                source: '节点2',
-                                target: '节点1',
-                            }, {
-                                source: '节点1',
-                                target: '节点3'
-                            }, {
-                                source: '节点2',
-                                target: '节点3'
-                            }, {
-                                source: '节点2',
-                                target: '节点4'
-                            }, {
-                                source: '节点1',
-                                target: '节点4'
-                            }],
-                            lineStyle: {
-                                normal: {
-                                    opacity: 0.9,
-                                    width: 2,
-                                    curveness: 0
+            var myChart = echarts.init(document.getElementById("myChart"));
+            var options = {
+                title: {
+                    show: false,
+                },
+                tooltip: {},
+                animationDurationUpdate: 1500,
+                animationEasingUpdate: 'quinticInOut',
+                series : [
+                    {
+                        type: 'graph',
+                        layout: 'force',
+                        force: {
+                            repulsion: 3000,
+                        },
+                        name: 'queryResult',
+                        symbolSize: 35,
+                        roam: true,
+                        draggable: true,
+                        focusNodeAdjacency: true,
+                        hoverAnimation: true,
+                        edgeSymbol: ['circle', 'arrow'],
+                        edgeSymbolSize: [4, 10],
+                        label: {
+                            normal: {
+                                show: true
+                            }
+                        },
+                        edgeLabel: {
+                            show: true,
+                            normal: {
+                                textStyle: {
+                                    fontSize: 12
                                 }
                             }
+                        },
+                        data: [{
+                            name: "1"
+                        }, {
+                            name: "2"
+                        }],
+                        links: [{
+                            source: "1",
+                            target: "2"
+                        }],
+                        lineStyle: {
+                            normal: {
+                                opacity: 0.9,
+                                width: 2,
+                                curveness: 0
+                            }
                         }
-                    ]
-                };
+                    }
+                ]
+            };
+            $( document ).ready(function() {
+                console.log( "ready!" );
                 myChart.setOption(options);
             });
-        </script>
-        <script type="text/javascript">
             function sparqlQuery() {
                 var mydata = $("#FormControlTextarea1").val();
                 console.log(mydata);
@@ -128,15 +108,23 @@
                     alert("输入不能为空");
                     return;
                 }
+                myChart.showLoading();
                 $.ajax({
                     type: "get",
                     url: "${pageContext.request.contextPath}/echartsview/sparql.do",
                     data: {"sparql": mydata},
                     success: function (data) {
                         console.log("成功");
-                        // var obj = data.nodes;
+                        // var obj = result.nodes;
                         console.log(data.nodes);
                         console.log(data.links);
+                        myChart.hideLoading();
+                        myChart.setOption({
+                            series: [{
+                                data: data.nodes,
+                                links: data.links
+                            }]
+                        });
                     },
                     error: function () {
                         console.log("失败");

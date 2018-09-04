@@ -4,10 +4,10 @@ public class Link {
     private String source;
     private String name;
     private String target;
-    public Link(String s, String p, String t) {
+    public Link(String s, String n, String t) {
         source = s;
-        target = p;
-        name = t;
+        name = n;
+        target = t;
     }
 
     public String getName() {

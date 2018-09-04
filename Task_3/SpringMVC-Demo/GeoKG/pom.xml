@@ -126,6 +126,18 @@
       <artifactId>fastjson</artifactId>
       <version>1.2.47</version>
     </dependency>
+    <!--Jena TDB-->
+    <dependency>
+      <groupId>org.apache.jena</groupId>
+      <artifactId>jena-tdb</artifactId>
+      <version>3.8.0</version>
+    </dependency>
+    <!--mongoDB-->
+    <dependency>
+      <groupId>org.mongodb</groupId>
+      <artifactId>mongodb-driver</artifactId>
+      <version>3.2.2</version>
+    </dependency>
   </dependencies>
 
   <build>
