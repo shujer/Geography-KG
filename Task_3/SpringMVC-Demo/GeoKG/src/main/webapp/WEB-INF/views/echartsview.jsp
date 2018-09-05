@@ -34,7 +34,7 @@
                 </form>
             </div>
             <div class="col-md-7 float-left" style="overflow: hidden">
-                <div id="myChart" class="graph" style="background-color: #0c5460;width: 600px;height: 600px"></div>
+                <div id="myChart" class="graph" style="border: 2px solid gray; border-radius: 5px;width: 550px;height: 500px;"></div>
             </div>
         </div>
     </layout:put>
@@ -45,60 +45,74 @@
             var myChart = echarts.init(document.getElementById("myChart"));
             var options = {
                 title: {
-                    show: false,
+                    show: false
                 },
-                tooltip: {},
+                tooltip: {
+                    trigger: 'item',
+                    formatter: function(params, ticket, callback) {
+                        var node = params.data;
+                        if (node.source != null && node.target != null) {   // 边
+                            return node.name;
+                        } else {    // 点
+                            return '';
+                        }
+                    }
+                },
                 animationDurationUpdate: 1500,
                 animationEasingUpdate: 'quinticInOut',
                 series : [
                     {
                         type: 'graph',
                         layout: 'force',
+                        name: "",
+                        hoverAnimation: true,
                         force: {
-                            repulsion: 3000,
+                            repulsion: 3000
                         },
-                        name: 'queryResult',
                         symbolSize: 35,
-                        roam: true,
                         draggable: true,
                         focusNodeAdjacency: true,
-                        hoverAnimation: true,
+                        roam: true,
                         edgeSymbol: ['circle', 'arrow'],
                         edgeSymbolSize: [4, 10],
+
+                        lineStyle: {
+                            normal: {
+                                width: 2,
+                                curveness: 0,
+                                opacity: 0.9
+                            }
+                        },
                         label: {
                             normal: {
-                                show: true
+                                show:true
                             }
                         },
                         edgeLabel: {
-                            show: true,
                             normal: {
-                                textStyle: {
-                                    fontSize: 12
+                                show: true,
+                                formatter: function (params) {
+                                    var node = params.data;
+                                    if (node.source != null && node.target != null) {   // 边
+                                        return node.name;
+                                    }
+                                    return "";
                                 }
                             }
                         },
-                        data: [{
-                            name: "1"
-                        }, {
-                            name: "2"
-                        }],
-                        links: [{
-                            source: "1",
-                            target: "2"
-                        }],
-                        lineStyle: {
-                            normal: {
-                                opacity: 0.9,
-                                width: 2,
-                                curveness: 0
-                            }
-                        }
+                        data: [
+                            {name: "1"},
+                            {name: "2"}
+                        ],
+                        links: [
+                            {source: "1", target: "2", name: "connect"}
+                        ]
                     }
                 ]
             };
-            $( document ).ready(function() {
-                console.log( "ready!" );
+
+            $(document).ready(function() {
+                console.log("ready!");
                 myChart.setOption(options);
             });
             function sparqlQuery() {

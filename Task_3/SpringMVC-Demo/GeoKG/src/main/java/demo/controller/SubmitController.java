@@ -18,6 +18,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class SubmitController {
+    private String owlIRI = "http://www.sysu.com/";
+    /*
+    * 返回的值将owlIRI替换成:
+    * */
+    public String cutOffPrefix(String str) {
+        if (str.contains(owlIRI)) {
+            return str.replace(owlIRI, ":");
+        }
+        return str;
+    }
     @RequestMapping(value = "/echartsview/sparql.do")
     @ResponseBody
     public void sparqlQuery(HttpServletRequest request, HttpServletResponse response)
@@ -25,14 +35,14 @@ public class SubmitController {
         String queryString = request.getParameter("sparql");    // sparql查询语句
         System.out.println(queryString);
         // TDB路径和model名称
-        String tdbPath = "G:\\Geography-KG\\Task_3\\SpringMVC-Demo\\GeoKG\\src\\main\\resources\\sysu_TDB";
+        String tdbPath = this.getClass().getResource("/sysu_TDB").getPath();
         String modelName = "sysuData";
         // 前缀定义
         String prefix="PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>"+
                 "PREFIX xsd:<http://www.w3.org/2000/10/XMLSchema#>"+
                 "PREFIX owl:<http://www.w3.org/2002/07/owl#>"+
                 "PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>"+
-                "PREFIX :<http://www.sysu.com/>";
+                "PREFIX :<" + owlIRI + ">";
         // 连接TDB查询
         Dataset ds = TDBFactory.createDataset(tdbPath);
         System.out.println("TDB连接");
@@ -44,9 +54,29 @@ public class SubmitController {
         Set<Link> linksSet = new HashSet<Link>();
         if (test.contains("select")) {  // select查询
             ResultSet results = qe.execSelect();
+            // 得到每一列的变量名
+            List<String> colList = results.getResultVars();
+            int colNum = colList.size();
+            String[] colString = colList.toArray(new String[colNum]);
+            while (results.hasNext()) {
+                QuerySolution sol = results.nextSolution();
+                Node node1 = new Node(0, sol.get(colString[0]).toString().replace(owlIRI, ":"), 2);
+                nodesSet.add(node1);
+                for (int i = 1; i < colNum; i++) {
+                    Node node2 = new Node(0, sol.get(colString[i]).toString().replace(owlIRI, ":"), 2);
+                    Link link1 = new Link(sol.get(colString[i-1]).toString().replace(owlIRI, ":"), "connect", sol.get(colString[i]).toString().replace(owlIRI, ":"));
+                    nodesSet.add(node2);
+                    linksSet.add(link1);
+                }
+            }
             ResultSetFormatter.out(System.out, results, query);
-        } else if (test.contains("construct")) {    // construct查询
-            Model results = qe.execConstruct();
+        } else if (test.contains("construct") || test.contains("describe")) {
+            Model results = null;
+            if (test.contains("construct")) {    // construct查询
+                results = qe.execConstruct();
+            } else {                             // describe查询
+                results = qe.execDescribe();
+            }
             StmtIterator iter = results.listStatements();
             // 将结果转换成echart需要的格式
             while (iter.hasNext()) {
@@ -54,20 +84,13 @@ public class SubmitController {
                 Resource sub = stmt.getSubject();
                 Property pre = stmt.getPredicate();
                 RDFNode obj = stmt.getObject();
-                Node node1 = new Node(0,sub.toString(),2);
-                Node node2 = new Node(0,obj.toString(),2);
-                Link link1 = new Link(sub.toString(), pre.toString(), obj.toString());
+                Node node1 = new Node(0,sub.toString().replace(owlIRI, ":"),2);
+                Node node2 = new Node(0,obj.toString().replace(owlIRI, ":"),2);
+                Link link1 = new Link(sub.toString().replace(owlIRI, ":"), pre.toString().replace(owlIRI, ":"), obj.toString().replace(owlIRI, ":"));
                 nodesSet.add(node1);
                 nodesSet.add(node2);
                 linksSet.add(link1);
-                System.out.println(stmt.toString());
-            }
-        } else if (test.contains("describe")) {     // describe查询
-            Model results = qe.execDescribe();
-            StmtIterator iter = results.listStatements();
-            while (iter.hasNext()) {
-                Statement stmt = iter.nextStatement();
-                System.out.println(stmt.toString());
+                System.out.println(stmt.toString().replace(owlIRI, ":"));
             }
         }
         /*
