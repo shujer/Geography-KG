@@ -8,3 +8,5 @@
 - NLP
 - Neo4j
 - mongoDB
+- TDB
+- echarts
