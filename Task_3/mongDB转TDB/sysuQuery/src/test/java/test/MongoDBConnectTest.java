@@ -16,8 +16,12 @@ import org.junit.Test;
 import java.util.List;
 
 public class MongoDBConnectTest {
-/*
+
     @Test
+    /*
+    * 将指定mongoDB数据库内的数据转换成三元组格式并与.owl融合，存入TDB
+    * 生成TDB可在DataBase目录下看到
+    * */
     public void connectTest() {
         String address = "ds223542.mlab.com";
         int PORT = 23542;
@@ -25,8 +29,8 @@ public class MongoDBConnectTest {
         String user = "sysu";
         String password = "sysu2018";
         String owlIRI = "http://www.sysu.com/";
-        String modelName = "sysuData";
-        String owlPath = "G:\\暑假-传统建筑\\protege存储\\sysu.owl";
+        String modelName = "http://www.Graph.com/sysuData"; // 命名图 -> 最好用绝对路径
+        String owlPath = "myData\\sysu.owl";
         String tdbPath = "DataBase\\sysu_TDB";
         // 新建一个ontmodel并设为可推理的
         OntModel ontModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM_MICRO_RULE_INF, null);
@@ -48,11 +52,11 @@ public class MongoDBConnectTest {
                 "?s :contain ?x." +
                 "?x :name ?xn." +
                 "}";
-        // 广州校区包含哪些专业
+        // 广州校区包含哪些学院
         String strq2 = "SELECT ?xn WHERE {" +
                 "?s rdf:type :zone." +
                 "?s :name '广州校区'." +
-                "?x rdf:type :specialty." +
+                "?x rdf:type :faculty." +
                 "?s :contain ?x." +
                 "?x :name ?xn." +
                 "}";
@@ -68,12 +72,14 @@ public class MongoDBConnectTest {
         // 释放资源
         qe.close();
     }
-*/
+
+/*
     @Test
+    // select查询测试
     public void queryTest() {
         // 与TDB建立连接
-        String tdbPath = "G:\\Geography-KG\\Task_3\\SpringMVC-Demo\\GeoKG\\src\\main\\resources\\sysu_TDB";
-        String modelName = "sysuData";
+        String tdbPath = "DataBase\\sysu_TDB";
+        String modelName = "http://www.Graph.com/sysuData";
         Dataset ds = TDBFactory.createDataset(tdbPath);
         // SPARQL测试
         String prefix="PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>"+
@@ -89,35 +95,17 @@ public class MongoDBConnectTest {
                 "?s :contain ?x." +
                 "?x :name ?xn." +
                 "}";
-        // 广州校区包含哪些专业
+        // 广州校区包含哪些校园
         String strq2 = "SELECT ?s ?xn WHERE {" +
                 "?s rdf:type :zone." +
                 "?s :name '广州校区'." +
-                "?x rdf:type :specialty." +
+                "?x rdf:type :campus." +
                 "?s :contain ?x." +
                 "?x :name ?xn." +
                 "}";
-        String strq3 = "SELECT ?s ?p ?o WHERE {" +
-                "?s ?p ?o." +
-                "}";
-        Query query = QueryFactory.create(prefix + strq3);
+        Query query = QueryFactory.create(prefix + strq2);
         // 执行查询
         QueryExecution qe = QueryExecutionFactory.create(query, ds.getNamedModel(modelName));
-        /*
-        Model resultModelA = qe.execDescribe();
-        System.out.println("OK");
-        StmtIterator resultIterA = resultModelA.listStatements();
-        // 将结果返回
-        while (resultIterA.hasNext()) {
-            Statement stmt = resultIterA.next();
-            System.out.println(stmt.toString());
-            Resource sub = stmt.getSubject();
-            Property pre = stmt.getPredicate();
-            RDFNode obj = stmt.getObject();
-            System.out.println(sub + "  " + pre + "  " + obj);
-        }
-        System.out.println("查询结束");
-        */
         ResultSet results = qe.execSelect();
         // 输出结果
         ResultSetFormatter.out(System.out, results, query);
@@ -125,5 +113,5 @@ public class MongoDBConnectTest {
         qe.close();
         ds.close();
     }
-
+*/
 }
