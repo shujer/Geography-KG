@@ -1,0 +1,21 @@
+package com.geokg.controller;
+
+import com.geokg.utlis.TDBClient;
+import org.apache.jena.query.QueryExecution;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class BaseController {
+
+    @RequestMapping("/geokg")
+    public String loadGeoKGPage(){
+        return "geokg";
+    }
+
+    @RequestMapping("/echartview")
+    public String loadEchartView(){
+        return "echartview";
+    }
+}
