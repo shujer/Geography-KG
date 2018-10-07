@@ -8,6 +8,12 @@
 
 ### 过程
 
+cd C:\Users\lanse\Documents\GitHub\Geography-KG\Task_3\QA\apache-jena-fuseki-3.8.0
+fuseki-server --loc=..\sysu_TDB /sysu
+
+cd C:\Users\lanse\Documents\GitHub\Geography-KG\Task_3\QA\REfO_KBQA_Demo
+python query_main.py
+
 - 首先，打开cmd，跳转到apache-jena-fuseki-3.8.0目录下，我们需要用到其中的fuseki-server命令
 - 在cmd内输入命令： <pre>fuseki-server --loc=G:\Geography-KG\Task\_3\QA\sysu\_TDB /sysu</pre>
 	- 其中G:\Geography-KG\Task\_3\QA\sysu\_TDB是这个TDB数据库在电脑内的路径

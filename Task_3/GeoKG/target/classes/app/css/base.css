@@ -1,0 +1,57 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 40px;
+    font-size: 16px;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    font-size: 14px;
+    /* Set the fixed height of the footer here */
+    height: 40px;
+    line-height: 40px; /* Vertically center the text there */
+    background-color: #f5f5f5;
+}
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+body > .container {
+    padding: 40px 15px 0;
+    text-align: center;
+}
+
+.footer > .container {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.navbar {
+    color: lightgray;
+    width: 100%;
+    background-color: #3b8686;
+    position: fixed;
+    font-size: 18px;
+    top: 0;
+}
+/*.navbar .navbar-brand {*/
+    /*color: whitesmoke;*/
+/*}*/
+
+/*.navbar .navbar-brand:hover,*/
+/*.navbar .navbar-brand:focus {*/
+    /*color: #b3d7ff;*/
+/*}*/
+/*#search_button button {*/
+    /*color: white;*/
+    /*background-color: #9DC8C8;*/
+    /*outline:none;*/
+/*}*/
+/*#search_button button:focus {*/
+    /*background-color: #3ac569;*/
+/*}*/
