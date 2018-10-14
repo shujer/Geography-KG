@@ -1,0 +1,173 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.geokg.com/"
+     xml:base="http://www.geokg.com/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.geokg.com/"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.geokg.com/belong_to -->
+
+    <owl:ObjectProperty rdf:about="http://www.geokg.com/belong_to">
+        <owl:inverseOf rdf:resource="http://www.geokg.com/contain"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.geokg.com/contain -->
+
+    <owl:ObjectProperty rdf:about="http://www.geokg.com/contain">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.geokg.com/materials -->
+
+    <owl:ObjectProperty rdf:about="http://www.geokg.com/materials">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.geokg.com/building"/>
+        <rdfs:range rdf:resource="http://www.geokg.com/material"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.geokg.com/types -->
+
+    <owl:ObjectProperty rdf:about="http://www.geokg.com/types">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.geokg.com/building"/>
+        <rdfs:range rdf:resource="http://www.geokg.com/type"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.geokg.com/address -->
+
+    <owl:DatatypeProperty rdf:about="http://www.geokg.com/address">
+        <rdfs:domain rdf:resource="http://www.geokg.com/building"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.geokg.com/built_year -->
+
+    <owl:DatatypeProperty rdf:about="http://www.geokg.com/built_year">
+        <rdfs:domain rdf:resource="http://www.geokg.com/building"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.geokg.com/description -->
+
+    <owl:DatatypeProperty rdf:about="http://www.geokg.com/description">
+        <rdfs:domain rdf:resource="http://www.geokg.com/building"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.geokg.com/name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.geokg.com/name"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.geokg.com/building -->
+
+    <owl:Class rdf:about="http://www.geokg.com/building">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.geokg.com/belong_to"/>
+                <owl:someValuesFrom rdf:resource="http://www.geokg.com/district"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.geokg.com/materials"/>
+                <owl:allValuesFrom rdf:resource="http://www.geokg.com/material"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.geokg.com/types"/>
+                <owl:allValuesFrom rdf:resource="http://www.geokg.com/type"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.geokg.com/district -->
+
+    <owl:Class rdf:about="http://www.geokg.com/district">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.geokg.com/belong_to"/>
+                <owl:someValuesFrom rdf:resource="http://www.geokg.com/region"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.geokg.com/material -->
+
+    <owl:Class rdf:about="http://www.geokg.com/material"/>
+    
+
+
+    <!-- http://www.geokg.com/region -->
+
+    <owl:Class rdf:about="http://www.geokg.com/region"/>
+    
+
+
+    <!-- http://www.geokg.com/type -->
+
+    <owl:Class rdf:about="http://www.geokg.com/type"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
+

@@ -23,15 +23,15 @@ public class MongoDBConnectTest {
     * 生成TDB可在DataBase目录下看到
     * */
     public void connectTest() {
-        String address = "ds223542.mlab.com";
-        int PORT = 23542;
-        String DBName = "sysu";
+        String address = "ds113693.mlab.com";
+        int PORT = 13693;
+        String DBName = "geokg";
         String user = "sysu";
         String password = "sysu2018";
-        String owlIRI = "http://www.sysu.com/";
-        String modelName = "http://www.Graph.com/sysuData"; // 命名图 -> 最好用绝对路径
-        String owlPath = "myData\\sysu.owl";
-        String tdbPath = "DataBase\\sysu_TDB";
+        String owlIRI = "http://www.geokg.com/";
+        String modelName = "http://www.Graph.com/geokgData"; // 命名图 -> 最好用绝对路径
+        String owlPath = "myData/geokg.owl";
+        String tdbPath = "DataBase/geokg_TDB";
         // 新建一个ontmodel并设为可推理的
         OntModel ontModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM_MICRO_RULE_INF, null);
         MongoToTDB mongoToTDB = new MongoToTDB();
@@ -39,6 +39,7 @@ public class MongoDBConnectTest {
         mongoToTDB.importMongoDBDate(address, PORT, DBName, user, password, owlIRI, ontModel);    // 导入实际数据
         mongoToTDB.saveModelToTDB(tdbPath, ontModel, modelName);  // 保存进TDB
         // SPARQL测试
+        /*
         String prefix="PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>"+
                 "PREFIX xsd:<http://www.w3.org/2000/10/XMLSchema#>"+
                 "PREFIX owl:<http://www.w3.org/2002/07/owl#>"+
@@ -71,37 +72,39 @@ public class MongoDBConnectTest {
         ResultSetFormatter.out(System.out, results, query);
         // 释放资源
         qe.close();
+        */
     }
 
-/*
+
     @Test
     // select查询测试
     public void queryTest() {
         // 与TDB建立连接
-        String tdbPath = "DataBase\\sysu_TDB";
-        String modelName = "http://www.Graph.com/sysuData";
+        String owlIRI = "http://www.geokg.com/";
+        String tdbPath = "DataBase/geokg_TDB";
+        String modelName = "http://www.Graph.com/geokgData";
         Dataset ds = TDBFactory.createDataset(tdbPath);
         // SPARQL测试
         String prefix="PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>"+
                 "PREFIX xsd:<http://www.w3.org/2000/10/XMLSchema#>"+
                 "PREFIX owl:<http://www.w3.org/2002/07/owl#>"+
                 "PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>"+
-                "PREFIX :<http://www.sysu.com/>";
-        // 学院包含哪些专业
-        String strq = "SELECT ?n ?xn WHERE {" +
-                "?s rdf:type :campus." +
-                "?s :name ?n." +
-                "?x rdf:type :specialty." +
-                "?s :contain ?x." +
-                "?x :name ?xn." +
+                "PREFIX :<" + owlIRI + ">";
+        // 广州有哪些建筑
+        String strq1 = "SELECT ?n ?xn WHERE {" +
+                "?dis rdf:type :district." +
+                "?dis :name '广州'." +
+                "?build rdf:type :building." +
+                "?dis :contain ?build." +
+                "?build :name ?xn." +
                 "}";
-        // 广州校区包含哪些校园
-        String strq2 = "SELECT ?s ?xn WHERE {" +
-                "?s rdf:type :zone." +
-                "?s :name '广州校区'." +
-                "?x rdf:type :campus." +
-                "?s :contain ?x." +
-                "?x :name ?xn." +
+        // 建筑的材料
+        String strq2 = "SELECT ?bn ?mn WHERE {" +
+                "?build rdf:type :building." +
+                "?mater rdf:type :material." +
+                "?build :materials ?mater." +
+                "?build :name ?bn." +
+                "?mater :name ?mn." +
                 "}";
         Query query = QueryFactory.create(prefix + strq2);
         // 执行查询
@@ -113,5 +116,5 @@ public class MongoDBConnectTest {
         qe.close();
         ds.close();
     }
-*/
+
 }

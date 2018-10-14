@@ -47,6 +47,7 @@
                 title: {
                     show: false
                 },
+                categories: [],
                 tooltip: {
                     trigger: 'item',
                     formatter: function(params, ticket, callback) {
@@ -132,11 +133,13 @@
                         // var obj = result.nodes;
                         console.log(data.nodes);
                         console.log(data.links);
+                        console.log(data.categories);
                         myChart.hideLoading();
                         myChart.setOption({
                             series: [{
                                 data: data.nodes,
-                                links: data.links
+                                links: data.links,
+                                categories: data.categories
                             }]
                         });
                     },

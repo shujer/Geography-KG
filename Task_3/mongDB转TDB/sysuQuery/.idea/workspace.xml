@@ -6,7 +6,17 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee4555d2-e8e1-4929-9bc6-fc392d214e0c" name="Default Changelist" comment="" />
+    <list default="true" id="ee4555d2-e8e1-4929-9bc6-fc392d214e0c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test/FindTableNameTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SpringMVC-Demo/GeoKG/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../SpringMVC-Demo/GeoKG/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mongoDBtoTDB/MongoDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mongoDBtoTDB/MongoDBAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/test/MongoDBConnectTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/MongoDBConnectTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sysuQuery.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mongoDBtoTDB/MongoDBAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mongoDBtoTDB/MongoDBAPI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/test/MongoDBConnectTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/test/MongoDBConnectTest.class" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -61,16 +71,83 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="-1689538962">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.60" value="1" />
+          <entry key="project.open.time.9" value="1" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="1303" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="1303" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="java" value="5" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="5" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/test/MongoDBConnectTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
-              <caret line="22" column="26" lean-forward="true" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+            <state relative-caret-position="154">
+              <caret line="108" column="56" selection-start-line="108" selection-start-column="56" selection-end-line="108" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/mongoDBtoTDB/MongoDBAPI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-227">
+              <caret line="141" column="32" selection-start-line="141" selection-start-column="32" selection-end-line="141" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/test/FindTableNameTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="276">
+              <caret line="27" column="85" selection-start-line="27" selection-start-column="85" selection-end-line="27" selection-end-column="85" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/mongoDBtoTDB/MongoToTDB.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-321">
+              <caret line="22" column="62" selection-start-line="22" selection-start-column="62" selection-end-line="22" selection-end-column="62" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#641#642#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -91,7 +168,18 @@
       <find>&lt;</find>
       <find>name</find>
       <find>listStatements</find>
+      <find>belongTo</find>
+      <find>queryInWhichCollection</find>
+      <find>stringObjectEntry</find>
+      <find>ArrayList</find>
+      <find>getMongoClientByCredential</find>
+      <find>types</find>
+      <find>obj</find>
+      <find>district</find>
     </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -100,8 +188,9 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/mongoDBtoTDB/mongoDBAPI.java" />
         <option value="$PROJECT_DIR$/src/main/java/mongoDBtoTDB/importTripletoTDB.java" />
-        <option value="$PROJECT_DIR$/src/main/java/mongoDBtoTDB/MongoDBAPI.java" />
         <option value="$PROJECT_DIR$/src/main/java/mongoDBtoTDB/MongoToTDB.java" />
+        <option value="$PROJECT_DIR$/src/test/java/test/FindTableNameTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mongoDBtoTDB/MongoDBAPI.java" />
         <option value="$PROJECT_DIR$/src/test/java/test/MongoDBConnectTest.java" />
       </list>
     </option>
@@ -133,17 +222,17 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="84" />
-    <option name="y" value="109" />
-    <option name="width" value="1115" />
+    <option name="x" value="99" />
+    <option name="y" value="54" />
+    <option name="width" value="1241" />
     <option name="height" value="735" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -154,17 +243,33 @@
             <path>
               <item name="sysuQuery" type="b2602c69:ProjectViewProjectNode" />
               <item name="sysuQuery" type="462c0819:PsiDirectoryNode" />
-              <item name="DataBase" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sysuQuery" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sysuQuery" type="462c0819:PsiDirectoryNode" />
               <item name="myData" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sysuQuery" type="b2602c69:ProjectViewProjectNode" />
               <item name="sysuQuery" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sysuQuery" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sysuQuery" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sysuQuery" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sysuQuery" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sysuQuery" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sysuQuery" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="mongoDBtoTDB" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sysuQuery" type="b2602c69:ProjectViewProjectNode" />
@@ -192,11 +297,12 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../SpringMVC-Demo/GeoKG" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Artifacts" />
@@ -216,7 +322,23 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.MongoDBConnectTest">
+  <component name="RunManager" selected="JUnit.MongoDBConnectTest.queryTest">
+    <configuration name="FindTableNameTest.tableNameTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="sysuQuery" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.FindTableNameTest" />
+      <option name="METHOD_NAME" value="tableNameTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MongoDBConnectTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="sysuQuery" />
       <extension name="coverage">
@@ -242,6 +364,22 @@
       <option name="PACKAGE_NAME" value="test" />
       <option name="MAIN_CLASS_NAME" value="test.MongoDBConnectTest" />
       <option name="METHOD_NAME" value="connectTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MongoDBConnectTest.queryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="sysuQuery" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.MongoDBConnectTest" />
+      <option name="METHOD_NAME" value="queryTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -323,11 +461,15 @@
       <item itemvalue="Tomcat Server.Tomcat9" />
       <item itemvalue="JUnit.MongoDBConnectTest.connectTest" />
       <item itemvalue="JUnit.MongoDBConnectTest" />
+      <item itemvalue="JUnit.FindTableNameTest.tableNameTest" />
+      <item itemvalue="JUnit.MongoDBConnectTest.queryTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.MongoDBConnectTest" />
+        <item itemvalue="JUnit.MongoDBConnectTest.queryTest" />
         <item itemvalue="JUnit.MongoDBConnectTest.connectTest" />
+        <item itemvalue="JUnit.FindTableNameTest.tableNameTest" />
+        <item itemvalue="JUnit.MongoDBConnectTest" />
       </list>
     </recent_temporary>
   </component>
@@ -335,42 +477,41 @@
     <configuration />
   </component>
   <component name="TestHistory">
-    <history-entry file="MongoDBConnectTest - 2018.09.07 at 01h 49m 54s.xml">
-      <configuration name="MongoDBConnectTest" configurationId="JUnit" />
+    <history-entry file="MongoDBConnectTest_connectTest - 2018.10.07 at 14h 17m 33s.xml">
+      <configuration name="MongoDBConnectTest.connectTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MongoDBConnectTest - 2018.09.07 at 01h 50m 53s.xml">
-      <configuration name="MongoDBConnectTest" configurationId="JUnit" />
+    <history-entry file="MongoDBConnectTest_queryTest - 2018.10.07 at 14h 19m 00s.xml">
+      <configuration name="MongoDBConnectTest.queryTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MongoDBConnectTest - 2018.09.07 at 01h 52m 55s.xml">
-      <configuration name="MongoDBConnectTest" configurationId="JUnit" />
+    <history-entry file="MongoDBConnectTest_queryTest - 2018.10.07 at 14h 21m 30s.xml">
+      <configuration name="MongoDBConnectTest.queryTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MongoDBConnectTest - 2018.09.07 at 01h 53m 16s.xml">
-      <configuration name="MongoDBConnectTest" configurationId="JUnit" />
+    <history-entry file="MongoDBConnectTest_queryTest - 2018.10.07 at 14h 21m 33s.xml">
+      <configuration name="MongoDBConnectTest.queryTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MongoDBConnectTest - 2018.09.07 at 01h 54m 42s.xml">
-      <configuration name="MongoDBConnectTest" configurationId="JUnit" />
+    <history-entry file="MongoDBConnectTest_queryTest - 2018.10.07 at 14h 22m 44s.xml">
+      <configuration name="MongoDBConnectTest.queryTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MongoDBConnectTest - 2018.09.07 at 01h 55m 28s.xml">
-      <configuration name="MongoDBConnectTest" configurationId="JUnit" />
+    <history-entry file="MongoDBConnectTest_connectTest - 2018.10.07 at 15h 11m 00s.xml">
+      <configuration name="MongoDBConnectTest.connectTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MongoDBConnectTest - 2018.09.07 at 01h 56m 00s.xml">
-      <configuration name="MongoDBConnectTest" configurationId="JUnit" />
+    <history-entry file="MongoDBConnectTest_queryTest - 2018.10.07 at 15h 11m 29s.xml">
+      <configuration name="MongoDBConnectTest.queryTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MongoDBConnectTest - 2018.09.07 at 01h 56m 45s.xml">
-      <configuration name="MongoDBConnectTest" configurationId="JUnit" />
+    <history-entry file="MongoDBConnectTest_queryTest - 2018.10.07 at 15h 11m 48s.xml">
+      <configuration name="MongoDBConnectTest.queryTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MongoDBConnectTest - 2018.09.07 at 12h 15m 47s.xml">
-      <configuration name="MongoDBConnectTest" configurationId="JUnit" />
+    <history-entry file="MongoDBConnectTest_queryTest - 2018.10.07 at 15h 15m 41s.xml">
+      <configuration name="MongoDBConnectTest.queryTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MongoDBConnectTest - 2018.09.07 at 12h 19m 04s.xml">
-      <configuration name="MongoDBConnectTest" configurationId="JUnit" />
+    <history-entry file="MongoDBConnectTest_queryTest - 2018.10.07 at 15h 16m 47s.xml">
+      <configuration name="MongoDBConnectTest.queryTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18835099" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19440243" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Web" order="2" side_tool="true" />
       <window_info id="Designer" order="3" />
@@ -378,12 +519,12 @@
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3295082" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.34811166" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
@@ -412,13 +553,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mongoDBtoTDB/MongoToTDB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="58" column="23" lean-forward="true" selection-start-line="58" selection-start-column="23" selection-end-line="58" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/mongoDBtoTDB/MongoDBtoTDB.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
@@ -426,17 +560,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mongoDBtoTDB/MongoToTDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-321">
+          <caret line="22" column="62" selection-start-line="22" selection-start-column="62" selection-end-line="22" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#641#642#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/test/FindTableNameTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="27" column="85" selection-start-line="27" selection-start-column="85" selection-end-line="27" selection-end-column="85" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/mongoDBtoTDB/MongoDBAPI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-391">
-          <caret line="63" column="18" selection-start-line="63" selection-start-column="18" selection-end-line="63" selection-end-column="18" />
+        <state relative-caret-position="-227">
+          <caret line="141" column="32" selection-start-line="141" selection-start-column="32" selection-end-line="141" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/test/MongoDBConnectTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="22" column="26" lean-forward="true" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+        <state relative-caret-position="154">
+          <caret line="108" column="56" selection-start-line="108" selection-start-column="56" selection-end-line="108" selection-end-column="56" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

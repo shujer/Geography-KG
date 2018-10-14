@@ -17,12 +17,12 @@ import org.slf4j.LoggerFactory;
 import org.bson.Document;
 
 import javax.print.Doc;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
+import org.bson.types.ObjectId;
 
 public class MongoDBAPI {
+    String belongTo = "belong_to";
     private static final String PLEASE_SEND_IP = "没有传入ip或者端口号";
     private static final String PLEASE_INSTANCE_MONGOCLIENT = "请实例化MongoClient";
     private static final String PLEASE_SEND_MONGO_REPOSITORY = "请指定要删除的mongo库";
@@ -97,12 +97,16 @@ public class MongoDBAPI {
     * 3. 通过游标遍历检索出的文档集合
     * */
     public int getTriples(MongoDatabase mongoDatabase, String collectionName, String owlIRI, OntModel ontModel) {
+        System.out.println(collectionName); // #
         int sum = 0;
-        String typeMappingDef = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type";
+        List<String> tableNames = new ArrayList<>();    // 用于记录当前表所链接到的其他表的表名
+        boolean getAllNeedTables = false;  // 为false代表还需要继续通过objectId找表名
+       String typeMappingDef = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type";
         MongoCollection<Document> documents = mongoDatabase.getCollection(collectionName);
         FindIterable<Document> findIterable = documents.find();
         MongoCursor<Document> mongoCursor = findIterable.iterator();
         while (mongoCursor.hasNext()) {
+            int index = 0;  // 用于跟踪tableNames下标
             Document document = mongoCursor.next();     //一行数据
             ObjectId id = document.getObjectId("_id");  //id
             // 当前实体的IRI
@@ -122,21 +126,39 @@ public class MongoDBAPI {
                     int len = typeName.lastIndexOf(".");
                     String type = typeName.substring(len + 1);
                     if (type.equals("ObjectId") || type.equals("ArrayList")) {     //对象属性(多个对象)
-                        predicateValue = owlIRI + "belongTo";
-                        //String tabelName = queryInWhichCollection(mongoDatabase, stringObjectEntry.getValue());
-                        String tabelName = key.substring(0, key.length() - 2);
+                        // System.out.println("对象属性    " + key);
+                        predicateValue = owlIRI + key;
+                        // 获取链接到的表的表名
+                        String tableName = "";
                         Object obj = stringObjectEntry.getValue();
+                        // 若是多个，提取第一个提取一个objectId
+                        if (type.equals("ArrayList")) {
+                            List<ObjectId> IDlist = (ArrayList<ObjectId>)obj;
+                            obj = IDlist.get(0);
+                        }
+                        if (getAllNeedTables) { //直接从tableNames里获取
+                            tableName = tableNames.get(index);
+                            index++;
+                        } else {
+                            tableName = queryInWhichCollection(mongoDatabase, obj); //查找获取
+                            tableNames.add(tableName);
+                        }
+                        System.out.println(tableName);
+                        //String tabelName = key.substring(0, key.length() - 2);
+
                         if (type.equals("ObjectId")) {  // 单个
-                            objectValue = owlIRI + tabelName + "/" + obj.toString();
+                            objectValue = owlIRI + tableName + "/" + obj.toString();
                             addTriple(ontModel, objectIRI, predicateValue, objectValue, 0);
                         } else {    // 多个
-                            List<ObjectId> IDlist = (ArrayList<ObjectId>)obj;
+                            Object objs = stringObjectEntry.getValue();
+                            List<ObjectId> IDlist = (ArrayList<ObjectId>)objs;
                             for (ObjectId nowId : IDlist) {
-                                objectValue = owlIRI + tabelName + "/" + nowId.toString();
+                                objectValue = owlIRI + tableName + "/" + nowId.toString();
                                 addTriple(ontModel, objectIRI, predicateValue, objectValue, 0);
                             }
                         }
                     } else {    // 数据属性
+                        // System.out.println("数据属性    " + key);
                         predicateValue = owlIRI + key;
                         objectValue = stringObjectEntry.getValue().toString();
                         addTriple(ontModel, objectIRI, predicateValue, objectValue, 1);
@@ -145,6 +167,8 @@ public class MongoDBAPI {
 
                 }
             }
+            // 经过一轮，需要的表名都已经全部按序录入tableNames里了
+            getAllNeedTables = true;
         }
         return sum;
     }
@@ -192,7 +216,7 @@ public class MongoDBAPI {
     * */
     public String queryInWhichCollection(MongoDatabase mongoDatabase, Object id) {
         String result = "";
-        DBObject filter = new BasicDBObject("_id", id.toString());
+        DBObject filter = new BasicDBObject("_id", id);
         // 获取数据库里的所有collection名
         List<String> collectionNames = getAllCollectionNames(mongoDatabase);
         // 遍历每一个collection
@@ -207,4 +231,5 @@ public class MongoDBAPI {
         }
         return result;
     }
+
 }
