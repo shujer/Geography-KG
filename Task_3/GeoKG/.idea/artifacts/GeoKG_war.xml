@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="GeoKG:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="GeoKG.war">
+      <element id="artifact" artifact-name="GeoKG:war exploded" />
+    </root>
+  </artifact>
+</component>
