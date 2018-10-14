@@ -22,7 +22,7 @@ public class SubmitController {
     private String owlIRI = "http://www.geokg.com/";
     private String tdbName = "geokg_TDB";
     private String modelName = "http://www.Graph.com/geokgData";
-    private String dataValue = "allDataValue";  // 标识字面量属性值
+    private String dataValue = "字面值";  // 标识字面量属性值
     private String cutChar = "/";   // IRI的切分符号，这里是/
     /*
     * 返回的值将owlIRI替换成:

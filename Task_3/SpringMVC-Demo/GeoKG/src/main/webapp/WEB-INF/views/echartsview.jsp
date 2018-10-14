@@ -59,6 +59,11 @@
                         }
                     }
                 },
+                legend: {
+                  tooltip: {
+                      show: true
+                  }
+                },
                 animationDurationUpdate: 1500,
                 animationEasingUpdate: 'quinticInOut',
                 series : [
@@ -143,6 +148,13 @@
                                 links: data.links,
                                 categories: data.categories
                             }]
+                        });
+                        myChart.setOption({
+                            legend: {
+                                data: categories.map(function(a) {
+                                    return a.name;
+                                })
+                            }
                         });
                     },
                     error: function () {
