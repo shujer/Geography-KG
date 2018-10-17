@@ -62,7 +62,8 @@
                 legend: {
                   tooltip: {
                       show: true
-                  }
+                  },
+                  show: true
                 },
                 animationDurationUpdate: 1500,
                 animationEasingUpdate: 'quinticInOut',
@@ -137,9 +138,7 @@
                         console.log("成功");
                         // var obj = result.nodes;
                         console.log(data.nodes);
-                        console.log("\n");
                         console.log(data.links);
-                        console.log("\n");
                         console.log(data.categories);
                         myChart.hideLoading();
                         myChart.setOption({
@@ -150,11 +149,11 @@
                             }]
                         });
                         myChart.setOption({
-                            legend: {
-                                data: categories.map(function(a) {
+                            legend: [{
+                                data: data.categories.map(function(a) {
                                     return a.name;
                                 })
-                            }
+                            }]
                         });
                     },
                     error: function () {

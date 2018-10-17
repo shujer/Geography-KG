@@ -5,15 +5,24 @@ public class Node {
     private String name;
     private Integer value;
     private String id;          // 若是实际节点，id是其在数据库内的IRI；若是关系节点，id是A->B中A的IRI+关系name
-    public Node(Integer c, String n, Integer v, String id){
+    private String symbol;
+    public Node(Integer c, String n, Integer v, String id, String symbol){
         this.category = c;
         this.name = n;
         this.value = v;
         this.id = id;
+        this.symbol = symbol;
+        if (this.symbol.contains("image://")) {
+            this.name = "";
+        }
     }
 
     public void setCategory(Integer category) {
         this.category = category;
+    }
+
+    public void setNodeSymbol(String symbol) {
+        this.symbol = symbol;
     }
 
     public void setValue(Integer value) {
@@ -26,6 +35,10 @@ public class Node {
 
     public void setNodeId(String id) {
         this.id = id;
+    }
+
+    public String getNodeSymbol() {
+        return symbol;
     }
 
     public Integer getCategory() {
@@ -66,6 +79,6 @@ public class Node {
 
     @Override
     public int hashCode() {
-        return name.hashCode();
+        return id.hashCode();
     }
 }

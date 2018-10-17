@@ -99,8 +99,8 @@ public class MongoDBAPI {
     public int getTriples(MongoDatabase mongoDatabase, String collectionName, String owlIRI, OntModel ontModel) {
         System.out.println(collectionName); // #
         int sum = 0;
-        List<String> tableNames = new ArrayList<>();    // 用于记录当前表所链接到的其他表的表名
-        boolean getAllNeedTables = false;  // 为false代表还需要继续通过objectId找表名
+        // List<String> tableNames = new ArrayList<>();    // 用于记录当前表所链接到的其他表的表名
+        // boolean getAllNeedTables = false;  // 为false代表还需要继续通过objectId找表名
        String typeMappingDef = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type";
         MongoCollection<Document> documents = mongoDatabase.getCollection(collectionName);
         FindIterable<Document> findIterable = documents.find();
@@ -125,7 +125,7 @@ public class MongoDBAPI {
                     String typeName = stringObjectEntry.getValue().getClass().getName();
                     int len = typeName.lastIndexOf(".");
                     String type = typeName.substring(len + 1);
-                    if (type.equals("ObjectId") || type.equals("ArrayList")) {     //对象属性(多个对象)
+                    if (type.equals("ObjectId") || type.equals("ArrayList")) {     //对象属性(多个对象)，这里默认array里存的都是objectId
                         // System.out.println("对象属性    " + key);
                         predicateValue = owlIRI + key;
                         // 获取链接到的表的表名
@@ -136,6 +136,7 @@ public class MongoDBAPI {
                             List<ObjectId> IDlist = (ArrayList<ObjectId>)obj;
                             obj = IDlist.get(0);
                         }
+                        /*
                         if (getAllNeedTables) { //直接从tableNames里获取
                             tableName = tableNames.get(index);
                             index++;
@@ -143,9 +144,8 @@ public class MongoDBAPI {
                             tableName = queryInWhichCollection(mongoDatabase, obj); //查找获取
                             tableNames.add(tableName);
                         }
-                        System.out.println(tableName);
-                        //String tabelName = key.substring(0, key.length() - 2);
-
+                        */
+                        tableName = queryInWhichCollection(mongoDatabase, obj); //查找获取
                         if (type.equals("ObjectId")) {  // 单个
                             objectValue = owlIRI + tableName + "/" + obj.toString();
                             addTriple(ontModel, objectIRI, predicateValue, objectValue, 0);
@@ -168,7 +168,7 @@ public class MongoDBAPI {
                 }
             }
             // 经过一轮，需要的表名都已经全部按序录入tableNames里了
-            getAllNeedTables = true;
+            // getAllNeedTables = true;
         }
         return sum;
     }

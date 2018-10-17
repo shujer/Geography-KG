@@ -1,0 +1,240 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.liyuan.com/"
+     xml:base="http://www.liyuan.com/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.liyuan.com/"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.liyuan.com/has_part -->
+
+    <owl:ObjectProperty rdf:about="http://www.liyuan.com/has_part">
+        <owl:inverseOf rdf:resource="http://www.liyuan.com/is_part_of"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.liyuan.com/has_picture -->
+
+    <owl:ObjectProperty rdf:about="http://www.liyuan.com/has_picture">
+        <owl:inverseOf rdf:resource="http://www.liyuan.com/is_picture_of"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:range rdf:resource="http://www.liyuan.com/picture"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.liyuan.com/is_part_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.liyuan.com/is_part_of">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.liyuan.com/is_picture_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.liyuan.com/is_picture_of">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.liyuan.com/picture"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.liyuan.com/materials -->
+
+    <owl:ObjectProperty rdf:about="http://www.liyuan.com/materials">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:range rdf:resource="http://www.liyuan.com/material"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.liyuan.com/types -->
+
+    <owl:ObjectProperty rdf:about="http://www.liyuan.com/types">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.liyuan.com/building"/>
+        <rdfs:range rdf:resource="http://www.liyuan.com/type"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.liyuan.com/address -->
+
+    <owl:DatatypeProperty rdf:about="http://www.liyuan.com/address">
+        <rdfs:domain rdf:resource="http://www.liyuan.com/building"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.liyuan.com/built_people -->
+
+    <owl:DatatypeProperty rdf:about="http://www.liyuan.com/built_people">
+        <rdfs:domain rdf:resource="http://www.liyuan.com/building"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.liyuan.com/built_year -->
+
+    <owl:DatatypeProperty rdf:about="http://www.liyuan.com/built_year">
+        <rdfs:domain rdf:resource="http://www.liyuan.com/building"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.liyuan.com/current_situation -->
+
+    <owl:DatatypeProperty rdf:about="http://www.liyuan.com/current_situation">
+        <rdfs:domain rdf:resource="http://www.liyuan.com/building"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.liyuan.com/description -->
+
+    <owl:DatatypeProperty rdf:about="http://www.liyuan.com/description"/>
+    
+
+
+    <!-- http://www.liyuan.com/name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.liyuan.com/name"/>
+    
+
+
+    <!-- http://www.liyuan.com/path -->
+
+    <owl:DatatypeProperty rdf:about="http://www.liyuan.com/path">
+        <rdfs:domain rdf:resource="http://www.liyuan.com/picture"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">path of picture</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.liyuan.com/process_source -->
+
+    <owl:DatatypeProperty rdf:about="http://www.liyuan.com/process_source">
+        <rdfs:domain rdf:resource="http://www.liyuan.com/building_part"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.liyuan.com/processing_technic -->
+
+    <owl:DatatypeProperty rdf:about="http://www.liyuan.com/processing_technic">
+        <rdfs:domain rdf:resource="http://www.liyuan.com/building_part"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.liyuan.com/protect_level -->
+
+    <owl:DatatypeProperty rdf:about="http://www.liyuan.com/protect_level">
+        <rdfs:domain rdf:resource="http://www.liyuan.com/building"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.liyuan.com/building -->
+
+    <owl:Class rdf:about="http://www.liyuan.com/building">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.liyuan.com/materials"/>
+                <owl:allValuesFrom rdf:resource="http://www.liyuan.com/material"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.liyuan.com/types"/>
+                <owl:allValuesFrom rdf:resource="http://www.liyuan.com/type"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.liyuan.com/building_part -->
+
+    <owl:Class rdf:about="http://www.liyuan.com/building_part">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.liyuan.com/is_part_of"/>
+                <owl:someValuesFrom rdf:resource="http://www.liyuan.com/building"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.liyuan.com/materials"/>
+                <owl:allValuesFrom rdf:resource="http://www.liyuan.com/material"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.liyuan.com/material -->
+
+    <owl:Class rdf:about="http://www.liyuan.com/material"/>
+    
+
+
+    <!-- http://www.liyuan.com/picture -->
+
+    <owl:Class rdf:about="http://www.liyuan.com/picture"/>
+    
+
+
+    <!-- http://www.liyuan.com/type -->
+
+    <owl:Class rdf:about="http://www.liyuan.com/type"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
+

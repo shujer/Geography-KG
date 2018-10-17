@@ -23,15 +23,15 @@ public class MongoDBConnectTest {
     * 生成TDB可在DataBase目录下看到
     * */
     public void connectTest() {
-        String address = "ds113693.mlab.com";
-        int PORT = 13693;
-        String DBName = "geokg";
+        String address = "ds131903.mlab.com";
+        int PORT = 31903;
+        String DBName = "liyuan";
         String user = "sysu";
         String password = "sysu2018";
-        String owlIRI = "http://www.geokg.com/";
-        String modelName = "http://www.Graph.com/geokgData"; // 命名图 -> 最好用绝对路径
-        String owlPath = "myData/geokg.owl";
-        String tdbPath = "DataBase/geokg_TDB";
+        String owlIRI = "http://www.liyuan.com/";
+        String modelName = "http://www.Graph.com/liyuanData"; // 命名图 -> 最好用绝对路径
+        String owlPath = "myData/liyuan.owl";
+        String tdbPath = "DataBase/liyuan_TDB";
         // 新建一个ontmodel并设为可推理的
         OntModel ontModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM_MICRO_RULE_INF, null);
         MongoToTDB mongoToTDB = new MongoToTDB();
@@ -80,9 +80,9 @@ public class MongoDBConnectTest {
     // select查询测试
     public void queryTest() {
         // 与TDB建立连接
-        String owlIRI = "http://www.geokg.com/";
-        String tdbPath = "DataBase/geokg_TDB";
-        String modelName = "http://www.Graph.com/geokgData";
+        String owlIRI = "http://www.liyuan.com/";
+        String modelName = "http://www.Graph.com/liyuanData"; // 命名图 -> 最好用绝对路径
+        String tdbPath = "DataBase/liyuan_TDB";
         Dataset ds = TDBFactory.createDataset(tdbPath);
         // SPARQL测试
         String prefix="PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>"+
@@ -106,7 +106,17 @@ public class MongoDBConnectTest {
                 "?build :name ?bn." +
                 "?mater :name ?mn." +
                 "}";
-        Query query = QueryFactory.create(prefix + strq2);
+        // all
+        String stre = "SELECT ?b ?xn WHERE {" +
+                      "?b :has_picture ?x." +
+                      "?x :name ?xn." +
+                      "}";
+        String queryString = "SELECT ?pn ?pp WHERE {" +
+                ":building\\/5bc31bd756943146d48ecd73" + " :has_picture ?pic." +
+                "?pic :name ?pn." +
+                "?pic :path ?pp." +
+                "}";
+        Query query = QueryFactory.create(prefix + queryString);
         // 执行查询
         QueryExecution qe = QueryExecutionFactory.create(query, ds.getNamedModel(modelName));
         ResultSet results = qe.execSelect();
